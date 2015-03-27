@@ -6,7 +6,7 @@ labwrap.py is a script for automatically generating wrappers for C/C++ code so t
 The general idea is to simplify the problem by focusing on the data types commonly used in such environments, and map them those of C++ libraries that provide similar functionality. At the moment only [Eigen](http://eigen.tuxfamily.org/) is supported.
 
 ## how it works
-The generation process starts by parsing the function prototypes from a header file. For the moment only plain C functions (with C++ types) are supported. It is unlikely that full object orientation will be ever added, so you are expected to provide a C interface. In addition, a mapping file for all used types needs to be provided. The initial example includes some Eigen classes. From the function specification and the mapping, a [jinja](http://jinja.pocoo.org/) template for the target platform (e.g a template of the MEX file) is populated.
+The generation process starts by parsing the function prototypes from a header file. For the moment only plain C functions (with C++ types) are supported. It is unlikely that full object orientation will ever be  added, so you are expected to provide a C interface. In addition, a mapping file for all used types needs to be provided. The initial example includes some Eigen classes. From the function specification and the mapping, a [jinja](http://jinja.pocoo.org/) template for the target platform (e.g a template of the MEX file) is populated.
 
 ## how to use it
 Provided that you have a .h file with your function definitions and a python distribution with the jinja package, the following should work:
@@ -34,7 +34,7 @@ And call them in Matlab...
 
 ```
 
-\>> out= matrixDoubleMex(ones(1,2),3)
+>> out= matrixDoubleMex(ones(1,2),3)
 out =
 
      3     3     3     3     3     3
