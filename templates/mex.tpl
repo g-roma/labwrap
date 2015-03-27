@@ -25,13 +25,12 @@ void mexFunction(int nouts, mxArray *outs[], int nins, const mxArray *ins[])
 
     // actual function call
     {{return_value.type}} result = {{function_name}}(
-        {% for arg in arguments %}
-            {{arg.name}}{% if not loop.last %},{% endif%}
-        {% endfor %}
+        {% for arg in arguments %}{{arg.name}}{% if not loop.last %},{% endif%}{% endfor %}
     );
 
     // return value
     {% if return_value.meta_type == "2D" %}
+        outs[0] = mxCreateDoubleMatrix(result.{{return_value.rows}} ,result.{{return_value.cols}}, mxREAL);
         {{map_type}}( mxGetPr(outs[0]), result.{{return_value.rows}}, result.{{return_value.cols}} ) = result;
     {% elif return_value.meta_type=="1D" %}
         TODO
