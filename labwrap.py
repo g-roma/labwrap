@@ -72,7 +72,7 @@ if __name__ == '__main__':
       spec["header"]="../"+args.input[0]
       spec["map_type"]="Eigen::Map<Eigen::MatrixXd>"#TODO!
       text = render_template(spec,MEX_TEMPLATE)
-      fname = args.out_dir[0]+"/"+f["function_name"]+"Mex.cpp"
+      fname = args.out_dir[0]+"/"+f["function_name"]+".cpp"
       outf=open(fname,"wt")
       outf.write(text)
       outf.close()
