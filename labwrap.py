@@ -66,20 +66,13 @@ if __name__ == '__main__':
   args = parser.parse_args()  
   typemaps = read_type_maps(args.typemaps[0])
   parsed_funcs = parse_header(args.input[0])
-  print "----"
   
   for f in parsed_funcs:
       spec = create_func_spec(f,typemaps)
       spec["header"]="../"+args.input[0]
       spec["map_type"]="Eigen::Map<Eigen::MatrixXd>"#TODO!
-      print spec
-      print "----"
       text = render_template(spec,MEX_TEMPLATE)
       fname = args.out_dir[0]+"/"+f["function_name"]+"Mex.cpp"
       outf=open(fname,"wt")
       outf.write(text)
       outf.close()
-
-  #print parsed_funcs[0]
-  #print create_func_spec(parsed_funcs[0],typemaps)
-  #main(args)
